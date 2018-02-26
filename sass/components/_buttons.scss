@@ -1,0 +1,100 @@
+.btn {
+	
+	&,
+	&:link,
+	&:visited {
+		text-transform: uppercase;
+		text-decoration: none;
+		font-size: $default-font-size;
+		padding: 1.5rem 4rem;
+		display: inline-block;
+		border-radius: 10rem;
+		-webkit-transition: all .2s;
+		-o-transition: all .2s;
+		transition: all .2s;
+		-webkit-box-shadow: 0 .5rem 1.2rem rgba($color-black,.4);
+		box-shadow: 0 .5rem 1.2rem rgba($color-black,.4);
+		position: relative;
+
+		// Compatibility for the <button> element
+		border: none;
+		cursor: pointer;
+	}
+	&:hover {
+		transform: translateY(-.3rem);
+		-webkit-box-shadow: 0 .8rem 1.6rem rgba($color-black,.4);
+		box-shadow: 0 .8rem 1.6rem rgba($color-black,.4);
+		&:after {
+			-webkit-transform: scaleX(1.4) scaleY(1.6);
+			-ms-transform: scaleX(1.4) scaleY(1.6);
+			-o-transform: scaleX(1.4) scaleY(1.6);
+			transform: scaleX(1.4) scaleY(1.6);
+			opacity: 0;
+		}
+	}
+	&:active {
+		transform: translateY(.1rem);
+		-webkit-box-shadow: 0 .4rem 1rem rgba($color-black,.4);
+		box-shadow: 0 .4rem 1rem rgba($color-black,.4);
+	}
+	&--white {
+		background-color: $color-white;
+		color: $color-grey-dark;
+		&:after {
+			background-color: $color-white;
+		}
+	}
+	&--green {
+		background-color: $color-primary;
+		color: $color-white;
+		&:after {
+			background-color: $color-primary;
+		}
+	}
+	&:after {
+		content: "";
+		display: inline-block;
+		border-radius: 10rem;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		transition: all .4s;
+	}
+	&--animated {
+		-webkit-animation: moveInBottom .5s ease-out .75s;
+		-o-animation: moveInBottom .5s ease-out .75s;
+		animation: moveInBottom .5s ease-out .75s;
+		/*На начальном времени задержки .75s выше, применять знач. в позиции 0% ниже*/
+		-webkit-animation-fill-mode: backwards;
+		-o-animation-fill-mode: backwards;
+		animation-fill-mode: backwards;
+	}
+
+}
+
+
+.btn-text {
+	&:link,
+	&:visited {
+		font-size: $default-font-size;
+		color: $color-primary;
+		display: inline-block;
+		text-decoration: none;
+		border-bottom: 1px solid $color-primary;
+		padding: 3px;
+		transition: all .2s;
+	}
+	&:hover {
+		background-color: $color-primary;
+		color: white;
+		box-shadow: .2rem .7rem 1.2rem rgba($color-black, .15);
+		transform: translateY(-2px);
+	}
+	&:active {
+		box-shadow: .1rem .5rem .9rem rgba($color-black, .15);
+		transform: translateY(0);
+	}
+}

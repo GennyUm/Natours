@@ -1,0 +1,37 @@
+*,	/*Доп. обобщённость для псевдо-елем. :before и :after */
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	list-style-type: none;
+	box-sizing: inherit; /* Декларируем наследование начиная от body */
+}
+
+
+html {
+	font-size: 62.5%; // 1rem == 10px (10px/16 = 62.5%)
+
+	@include responsive(tab-landscape) {
+		font-size: 56.25%; // 1rem == 9px (9/16 = 56.25%)
+	}
+	@include responsive(tablet-port) {
+		font-size: 50%; // 1rem == 8px (8/16 = 50%)
+	}
+
+	/* Min-width */
+	@include responsive(biggest-desktop) {
+		font-size: 75%; // 1rem == 12 (12/16 = 75%)
+	}
+}
+
+
+body {
+	box-sizing: border-box;
+}
+
+
+::selection {
+	background-color: $color-primary;
+	color: $color-white;
+}

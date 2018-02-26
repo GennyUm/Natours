@@ -1,0 +1,124 @@
+.popup {
+	height: 100vh;
+	width: 100%;
+	background-color: rgba($color-black, .8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 30;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .2s;
+
+	&__content {
+		@include absoluteCenter;
+		width: 85%;
+		background-color: $color_white;
+		box-shadow: 0 2rem 4rem rgba($color-black, .2);
+		border-radius: 3px;
+		display: table; // For vertical aligning .leftSide and .rightSide
+		overflow: hidden; // For hide the border corners
+		transform: translate(-50%, -50%) scale(0); // For adding one more value scale overwrite property transform (mixins)
+		transition: all .8s .1s;
+	}
+
+	&__leftSide {
+		width: 33.3333%;
+		display: table-cell; // For vertical aligning .leftSide / Can be float-left instead
+		vertical-align: middle;
+
+		@include responsive(tab-landscape) {
+			display: none;
+		}
+	}
+
+	&__rightSide {
+		width: 66.6667%;
+		display: table-cell; // For vertical aligning .rightSide / Can be float-left or float-right instead
+		vertical-align: middle;
+		padding: 3rem 5rem;
+
+		@include responsive(tab-landscape) {
+			display: block;
+			width: 100%;
+		}
+		@include responsive(phone) {
+			padding: 3rem 3rem;
+		}
+	}
+
+	&__img {
+		display: block;
+		width: 100%;
+
+		@include responsive(tab-landscape) {
+			display: inline-block;
+			width: 49.9%;
+		}
+	}
+
+	&__heading {
+		display: block;
+		margin-bottom: 4rem;
+
+		@include responsive(phone) {
+			margin-bottom: 2rem;
+		}
+	}
+
+	.heading-tertiary {
+		text-align: center;
+	}
+
+	&__text {
+		font-size: 1.4rem;
+		margin-bottom: 3.5rem;
+
+		-webkit-column-count: 2;
+		-webkit-column-gap: 4rem;
+		-webkit-column-rule: 1px solid $color-bg-grey-1;
+
+		-moz-column-count: 2;
+		-moz-column-gap: 4rem;
+		-moz-column-rule: 1px solid $color-bg-grey-1;
+
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
+
+		@include responsive(phone) {
+			-webkit-column-count: 1;
+			-moz-column-count: 1;
+		}
+	}
+
+	// POPUP OPEN STATES
+	&:target { // id target for the popup
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&:target &__content {
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	&__close {
+		&:link,
+		&:visited {
+			color: rgba($color-black, .7);
+			font-size: 3.5rem;
+			position: absolute;
+			top: 2rem;
+			right: 2rem;
+			display: inline-block;
+			text-decoration: none;
+			line-height: 60%; // Normalize height for the close-active zone
+			transition: all .2s;
+		}
+
+		&:hover {
+			color: $color-primary;
+		}
+	}
+}

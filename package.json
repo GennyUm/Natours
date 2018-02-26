@@ -1,0 +1,20 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "Landing of natours",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "live": "live-server",
+    "start": "npm-run-all --parallel watch:sass live"
+  },
+  "author": "Gen",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "concat": "^1.0.3",
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "postcss-cli": "^4.1.1"
+  }
+}

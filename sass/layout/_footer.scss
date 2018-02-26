@@ -1,0 +1,73 @@
+.footer {
+	background-color: $color-bg-footer;
+	padding: 10rem 0;
+	font-size: 1.4rem;
+	color: #f7f7f7;
+
+	&__logo-box {
+		text-align: center;
+		margin-bottom: 8rem;
+	}
+
+	&__logo {
+		width: 15rem;
+	}
+
+	&__nav {
+		border-top: 1px solid $color-grey-dark;
+		padding-top: 2rem;
+		// Equal length for both the top line and the content in
+		display: inline-block;
+
+		@include responsive(tablet-port) {
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	&__list {
+		/*Conciseness is a child of talent*/
+	}
+
+	&__item {
+		display: inline-block;
+
+		&:not(:last-child) {
+			margin: 0 2rem 2rem 0;
+		}
+	}
+
+	&__link {
+		
+		&:link,
+		&:visited {
+			color: #f7f7f7;
+			text-transform: uppercase;
+			text-decoration: none;
+			display: inline-block;
+			background-color: $color-bg-footer;
+			transition: all .2s;
+			backface-visibility: hidden;
+		}
+
+		&:hover,
+		&:active {
+			color: $color-primary;
+			transform: rotate(5deg) scale(1.3);
+			//box-shadow: 0 1rem 2rem rgba($color-black, .4);
+		}
+	}
+
+	&__copyright {
+		border-top: 1px solid $color-grey-dark;
+		padding-top: 2rem;
+		width: 86%;
+		float: right;
+
+		@include responsive(phone) {
+			width: 100%;
+			float: none;
+		}
+	}
+
+}

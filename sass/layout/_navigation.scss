@@ -1,0 +1,166 @@
+.navigation {
+
+	&__checkbox {
+		display: none;
+	}
+
+	&__button {
+		width: 7rem;
+		height: 7rem;
+		border-radius: 50%;
+		background-color: $color-white;
+		position: fixed;
+		top: 6rem;
+		right: 6rem;
+		z-index: 20;
+		box-shadow: .1rem 1rem 2rem rgba($color-black, .1);
+		text-align: center;
+		cursor: pointer;
+
+		@include responsive(tablet-port) {
+			top: 3rem;
+		}
+		@include responsive(phone) {
+			right: 3rem;
+		}
+	}
+
+	&__background {
+		width: 6rem;
+		height: 6rem;
+		border-radius: 50%;
+		position: fixed;
+		top: 6.5rem;
+		right: 6.5rem;
+		background-image: radial-gradient($color-primary-light, $color-primary-dark);
+		z-index: 10;
+		transition: transform .3s;
+
+		@include responsive(tablet-port) {
+			top: 3.5rem;
+		}
+		@include responsive(phone) {
+			right: 3.5rem;
+		}
+	}
+
+	&__nav {
+		height: 100vh;
+		width: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 15;
+		opacity: 0;
+		visibility: hidden;
+		transition: all .3s;
+	}
+
+	&__list {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+
+	&__item {
+		
+		&:not(:last-child) {
+			margin-bottom: .5rem;
+		}
+	}
+
+	&__link {
+
+		&:link,
+		&:visited {
+			display: inline-block;
+			font-size: 3rem;
+			font-weight: 300;
+			padding: 1rem 2rem;
+			color: $color-white;
+			text-decoration: none;
+			text-transform: uppercase;
+			background-image: linear-gradient(120deg,	transparent 50%, $color-white 50%);
+			background-size: 230%;
+			transition: all .5s;
+			backface-visibility: hidden;
+		}
+		
+		&:hover,
+		&:active {
+			background-position: 100%;
+			color: $color-primary;
+			transform: translateX(1rem);
+		}
+	}
+
+	// FUNCTIONALITY
+	&__checkbox:checked ~ &__background {
+		transform: scale(80);
+	}
+
+	&__checkbox:checked ~ &__nav {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	// HAMBURGER ICON
+	&__burger-icon {
+		position: relative;
+		margin-top: 3.4rem;
+		
+		&,
+		&:before,
+		&:after {
+			width: 3rem;
+			height: 3px;
+			display: inline-block;
+			background-color: $color-grey-dark;
+			transition: all .2s;
+		}
+
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+		}
+
+		&:before { top: -.8rem; }
+		&:after { top: .8rem; }
+	}
+
+	&__button:hover &__burger-icon { 
+		top: 0;
+		transform: scale(1.1);
+	}
+
+	&__button:hover &__burger-icon:before { 
+		top: -1rem;
+	}
+	
+	&__button:hover &__burger-icon:after { 
+		top: 1rem;
+	}
+
+	&__checkbox:checked + &__button &__burger-icon,
+	&__checkbox:checked + &__button &__burger-icon:before,
+	&__checkbox:checked + &__button &__burger-icon:after {
+		top: 0;
+		transition: all .2s;
+	}
+
+	&__checkbox:checked + &__button &__burger-icon {
+		background-color: transparent;
+	}
+
+	&__checkbox:checked + &__button &__burger-icon:before {
+		transform: rotate(135deg);
+	}
+
+	&__checkbox:checked + &__button &__burger-icon:after {
+		transform: rotate(-135deg);
+	}
+}

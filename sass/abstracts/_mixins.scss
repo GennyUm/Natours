@@ -1,0 +1,41 @@
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+
+@mixin absoluteCenter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+
+// MEDIA QUERY MANAGER / DESKTOP FIRST
+/* OREDER TO CHANGE: base + typography > general layout + grid > page layout > components */
+@mixin responsive($breakpoint) {
+
+	/* NORMAL DESKTOP */
+
+	@if $breakpoint == tab-landscape {
+		@media only screen and (max-width: 75em) { @content }; // 1200px / 16px
+	}
+
+	@if $breakpoint == tablet-port {
+		@media only screen and (max-width: 56.25em) { @content }; // 900px / 16px
+	}
+
+	@if $breakpoint == phone {
+		@media only screen and (max-width: 37.5em) { @content }; // 600px / 16px
+	}
+
+	// START FROM MIN-WIDTH
+	@if $breakpoint == biggest-desktop {
+		@media only screen and (min-width: 112.5em) { @content }; // 1800px / 16px
+	}
+}
